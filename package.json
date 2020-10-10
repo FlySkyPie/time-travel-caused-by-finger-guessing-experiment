@@ -1,0 +1,21 @@
+{
+  "name": "the-experiment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "model": "babel-node ./src/run-model-numerical.js",
+    "experiment": "babel-node ./src/run-experiment.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "normal-distribution": "0.0.9"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3"
+  }
+}
