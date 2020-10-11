@@ -46,32 +46,37 @@ function doResursion(data, trialTimesPerPeople) {
     let primdaryArray = data.filter(value => (value >= 0));
     return primdaryArray.concat(secondaryArray);
 }
+
 let peopleAmount = 1000,
-    trialTimesPerPeople = 1000000;
+    trialTimesPerPeople = 1000000,
+    testTimes = 3;
 
-let array = new Array(peopleAmount).fill(0);
+for (let j = 1; j <= testTimes; j++) {
+    console.log(`run test: ${j.toString()}/${testTimes}`);
+    let array = new Array(peopleAmount).fill(0);
 
-let result = doResursion(array, trialTimesPerPeople);
+    let result = doResursion(array, trialTimesPerPeople);
 
-//saveData(result, "./data/model-numerical/data3.txt");
-result.sort((a, b) => (b - a));
-saveData(result, "./data/model-numerical/data1.txt");
+    result.sort((a, b) => (b - a));
+    saveData(result, "./data/model-numerical/data" + j.toString() + ".txt");
 
-let max = Math.max(...result),
-    delta = Math.ceil(max / 20),
-    statistic = new Map();
+    let max = Math.max(...result),
+        delta = Math.ceil(max / 20),
+        statistic = new Map();
 
-result.forEach(value => {
-    let index = Math.floor(value / delta) * delta;
-    if (statistic.has(index)) {
-        let value = statistic.get(index) + 1;
-        statistic.set(index, value);
-    } else {
-        statistic.set(index, 1);
-    }
-})
+    result.forEach(value => {
+        let index = Math.floor(value / delta) * delta;
+        if (statistic.has(index)) {
+            let value = statistic.get(index) + 1;
+            statistic.set(index, value);
+        } else {
+            statistic.set(index, 1);
+        }
+    })
 
-statistic.forEach((value, key) => {
-    statistic.set(key, value / peopleAmount);
-});
-saveData(statistic, "./data/model-numerical/distribution1.txt");
+    statistic.forEach((value, key) => {
+        statistic.set(key, value / peopleAmount);
+    });
+    saveData(statistic, "./data/model-numerical/distribution" + j.toString() + ".txt");
+}
+

@@ -23,7 +23,7 @@ for (let i = 0; i < resolution; i++) {
 
 let string = "";
 distribution.forEach((value, key) => {
-    string += key.toString() + "," + value.toString() + "\n";
+    string += key.toString() + ", " + value.toString() + "\n";
 });
 
 fs.writeFile("./data/formular/data.txt", string, (err) => {
