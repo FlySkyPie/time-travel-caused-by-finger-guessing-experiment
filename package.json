@@ -6,6 +6,7 @@
   "scripts": {
     "model": "babel-node ./src/run-model-numerical.js",
     "experiment": "babel-node ./src/run-experiment.js",
+    "experiment2": "babel-node ./src/run-experiment2.js",
     "formula": "babel-node ./src/run-model-formula.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
